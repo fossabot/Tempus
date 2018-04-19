@@ -38,6 +38,7 @@ public class ModelConstants {
     public static final String ID_PROPERTY = "id";
     public static final String USER_ID_PROPERTY = "user_id";
     public static final String TENANT_ID_PROPERTY = "tenant_id";
+    public static final String NAME_PROPERTY = "name";
     public static final String CUSTOMER_ID_PROPERTY = "customer_id";
     public static final String DEVICE_ID_PROPERTY = "device_id";
     public static final String TITLE_PROPERTY = "title";
@@ -140,7 +141,7 @@ public class ModelConstants {
     public static final String DEVICE_COLUMN_FAMILY_NAME = "device";
     public static final String DEVICE_TENANT_ID_PROPERTY = TENANT_ID_PROPERTY;
     public static final String DEVICE_CUSTOMER_ID_PROPERTY = CUSTOMER_ID_PROPERTY;
-    public static final String DEVICE_NAME_PROPERTY = "name";
+    public static final String DEVICE_NAME_PROPERTY = NAME_PROPERTY;
     public static final String DEVICE_TYPE_PROPERTY = "type";
     public static final String DEVICE_ADDITIONAL_INFO_PROPERTY = ADDITIONAL_INFO_PROPERTY;
 
@@ -150,6 +151,26 @@ public class ModelConstants {
     public static final String DEVICE_BY_CUSTOMER_BY_TYPE_AND_SEARCH_TEXT_COLUMN_FAMILY_NAME = "device_by_customer_by_type_and_search_text";
     public static final String DEVICE_BY_TENANT_AND_NAME_VIEW_NAME = "device_by_tenant_and_name";
     public static final String DEVICE_TYPES_BY_TENANT_VIEW_NAME = "device_types_by_tenant";
+
+
+    /**
+     * Cassandra DeviceTemplate constants
+     */
+    public static final String DEVICE_TEMPLATE_COLUMN_FAMILY_NAME = "device_template";
+    public static final String DEVICE_TEMPLATE_TENANT_ID_PROPERTY = TENANT_ID_PROPERTY;
+    public static final String DEVICE_TEMPLATE_CUSTOMER_ID_PROPERTY = CUSTOMER_ID_PROPERTY;
+    public static final String DEVICE_TEMPLATE_NAME_PROPERTY = NAME_PROPERTY;
+    public static final String DEVICE_TEMPLATE_ADDITIONAL_INFO_PROPERTY = ADDITIONAL_INFO_PROPERTY;
+    public static final String DEVICE_TEMPLATE_QUERIES_PROPERTY = "queries";
+    public static final String DEVICE_TEMPLATE_BY_TENANT_AND_NAME_VIEW_NAME = "device_template_by_tenant_and_name";
+
+    /**
+     * JPA DeviceTemplate constants
+     */
+
+    public static final String DEVICE_TEMPLATE_QUERY_ATTRIBUTE = "attribute";
+    public static final String DEVICE_TEMPLATE_QUERY_VALUE = "criteria";
+    public static final String DEVICE_TEMPLATE_QUERIES = "device_template_queries";
 
     /**
      * Application constants

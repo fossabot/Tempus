@@ -757,3 +757,21 @@ CREATE TABLE IF NOT EXISTS thingsboard.audit_log_by_tenant_id_partitions (
 ) WITH CLUSTERING ORDER BY ( partition ASC )
 AND compaction = { 'class' :  'LeveledCompactionStrategy'  };
 
+
+CREATE TABLE IF NOT EXISTS thingsboard.device_template (
+  id timeuuid,
+  tenant_id timeuuid,
+  customer_id timeuuid,
+  name text,
+  search_text text,
+  additional_info text,
+  queries map<text,text>,
+  PRIMARY KEY (id, tenant_id, customer_id)
+);
+
+CREATE MATERIALIZED VIEW IF NOT EXISTS thingsboard.device_template_by_tenant_and_name AS
+SELECT *
+from thingsboard.device_template
+WHERE tenant_id IS NOT NULL AND customer_id IS NOT NULL AND name IS NOT NULL AND id IS NOT NULL
+PRIMARY KEY ( tenant_id, name, id, customer_id)
+WITH CLUSTERING ORDER BY ( name ASC, id DESC, customer_id DESC);

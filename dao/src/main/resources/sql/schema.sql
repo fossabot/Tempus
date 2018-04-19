@@ -339,3 +339,18 @@ CREATE TABLE IF NOT EXISTS computation_job (
 
 
 CREATE TABLE IF NOT EXISTS installed_schema_versions(executed_scripts varchar(255) UNIQUE);
+
+CREATE TABLE IF NOT EXISTS device_template(
+    id varchar(31) NOT NULL CONSTRAINT device_template_pkey PRIMARY KEY,
+    tenant_id varchar(31),
+    customer_id varchar(31),
+    name varchar(255),
+    search_text varchar(255),
+    additional_info varchar
+);
+
+CREATE TABLE IF NOT EXISTS device_template_queries(
+    device_template_id varchar(31) not null,
+    attribute varchar not null,
+    criteria varchar not null
+);
