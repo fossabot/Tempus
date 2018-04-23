@@ -310,6 +310,8 @@
                     <includes>
                         <include>**/*TestSuite.java</include>
                     </includes>
+                    <parallel>suites</parallel>
+                    <useUnlimitedThreads>true</useUnlimitedThreads>
                 </configuration>
             </plugin>
             <plugin>
