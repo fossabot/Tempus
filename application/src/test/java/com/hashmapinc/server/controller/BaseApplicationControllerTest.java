@@ -791,8 +791,8 @@ public class BaseApplicationControllerTest extends AbstractControllerTest {
         Assert.assertEquals(ComponentLifecycleState.SUSPENDED, foundComputationJob.getState());
     }
 
-    //TODO Needs to fixed after a discussion with Chris and Jay
-    /*@Test
+
+    @Test
     public void testActivateApplicationSuccess() throws Exception {
         Application application = new Application();
         application.setDeviceTypes(mapper.readTree("{\"deviceTypes\":[{\"name\":\"DT1\"}]}"));
@@ -802,7 +802,17 @@ public class BaseApplicationControllerTest extends AbstractControllerTest {
         Computations savedComputations = saveComputation();
         ComputationJob computationJob1 = new ComputationJob();
         computationJob1.setName("Computation Job 1");
-        computationJob1.setArgParameters(mapper.readTree("{\"host\": \"localhost\", \"port\": 8080}"));
+        computationJob1.setArgParameters(mapper.readTree("{\n" +
+                "\t\"port\": 8998,\n" +
+                "\t\"host\": \"spark - master\",\n" +
+                "\t\"window\": 1,\n" +
+                "\t\"kafkaUrl\": \"kafka: 9092\",\n" +
+                "\t\"kafkaTopic\": \"water - tank - level - data\",\n" +
+                "\t\"actionPath\": \"batches\",\n" +
+                "\t\"mqttUrl\": \"tb: 1883\",\n" +
+                "\t\"highWaterMark\": \"70\",\n" +
+                "\t\"gatewayAccessToken\": \"GATEWAY_ACCESS_TOKEN\"\n" +
+                "}"));
         ComputationJob savedComputationJob1 = doPost("/api/computations/"+savedComputations.getId().getId().toString()+"/jobs", computationJob1, ComputationJob.class);
 
         ApplicationFieldsWrapper applicationComputationJosWrapper = new ApplicationFieldsWrapper();
@@ -848,7 +858,7 @@ public class BaseApplicationControllerTest extends AbstractControllerTest {
         Assert.assertEquals(ComponentLifecycleState.SUSPENDED, doGet("/api/application/" + savedApplication.getId().getId().toString(), Application.class).getState());
         Assert.assertEquals(ComponentLifecycleState.SUSPENDED ,doGet("/api/rule/"+savedRule1.getId().getId().toString(), RuleMetaData.class).getState());
         Assert.assertEquals(ComponentLifecycleState.SUSPENDED, doGet("/api/computations/"+savedComputations.getId().getId().toString()+"/jobs/"+ savedComputationJob1.getId(), ComputationJob.class).getState());
-    }*/
+    }
 
     @Test
     public void testActivateSuspendApplicationWithoutRulesAndComputationSuccess() throws Exception {
